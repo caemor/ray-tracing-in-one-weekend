@@ -114,6 +114,14 @@ impl Sub for Vector3 {
     }
 }
 
+impl Sub<&Vector3> for Vector3 {
+    type Output = Vector3;
+
+    fn sub(self, rhs: &Self) -> Self::Output {
+        Vector3::new(self.x - rhs.x, self.y - rhs.y, self.z - rhs.z)
+    }
+}
+
 impl Mul<Vector3> for Vector3 {
     type Output = Vector3;
 
