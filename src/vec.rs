@@ -1,10 +1,15 @@
 use std::ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Neg, Sub};
 
+/// Use this type everywhere to easily change between f64 and f32
 pub type FloatType = f64;
+
+/// Color Abstraction for Vector3
 pub type Color = Vector3;
+/// Point3 Abstraction for Vector3
 pub type Point3 = Vector3;
 
-#[derive(Debug, Clone, Copy)]
+/// 3-D Vector
+#[derive(Debug, Clone, Copy, Default)]
 pub struct Vector3 {
     pub x: FloatType,
     pub y: FloatType,
