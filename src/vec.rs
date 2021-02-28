@@ -62,13 +62,23 @@ impl Vector3 {
         self.z
     }
 
-    pub fn print_color(&self) {
+    pub fn print_color(&self, samples_per_pixel: usize) {
+        let mut r = self.r();
+        let mut g = self.g();
+        let mut b = self.b();
+
+        // Divide the color by the number of samples
+        let scale = 1.0 / (samples_per_pixel as FloatType);
+        r *= scale;
+        g *= scale;
+        b *= scale;
+
         // Write the translated [0,255] value of each color component
         println!(
             "{} {} {}",
-            (255.999 * self.x) as u8,
-            (255.999 * self.y) as u8,
-            (255.999 * self.z) as u8
+            (256.0 * r.clamp(0.0, 0.999)) as u8,
+            (256.0 * g.clamp(0.0, 0.999)) as u8,
+            (256.0 * b.clamp(0.0, 0.999)) as u8
         );
     }
 }
